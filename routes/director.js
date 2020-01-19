@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 
 //Models
@@ -15,8 +16,13 @@ router.post('/', (req, res, next) => {
   });
 });
 
-router.get('/', (req, res) => {
+router.get('/:director_id', (req, res) => {
     const promise = Director.aggregate([
+        {
+            $match: {
+                '_id': mongoose.Types.ObjectId(req.params.director_id)
+            }
+        },
         {
             $lookup: {
                 from: 'movies',
