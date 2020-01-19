@@ -1,7 +1,7 @@
 # movie-api
 Node.js api example
 
-#Movies
+# Movies
 
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
@@ -13,7 +13,7 @@ Node.js api example
 | /api/movies/top10 | `GET` | Empty | Get the top 10 movies. |
 | /api/movies/between/:start_year/:end_year | `GET` | Empty | Movies between two dates. |
 
-#Directors
+# Directors
 
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ Node.js api example
 | /api/directors/:director_id | `DELETE` | 	Empty | Delete a director. | 
 | /api/directors/:director_id/best10movie |	`GET` | Empty | The director's top 10 films. |
 
-#Index
+# Index
 | Route | HTTP Verb | POST body | Description |
 | --- | --- | --- | --- |
 | /register | `POST` | { username: 'foo', password:'1234' } | Create a new user. |
