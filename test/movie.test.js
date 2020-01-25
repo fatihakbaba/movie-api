@@ -16,7 +16,7 @@ describe('/api/movies tests ', () => {
             .end((err, res) => {
                 token = res.body.token;
                 done();
-            });
+            }).catch(done);
     });
 
     describe('/GET movies', () => {
@@ -28,7 +28,7 @@ describe('/api/movies tests ', () => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
                 done();
-            });
+            }).catch(done);
         });
     });
     describe('/POST movie', () => {
@@ -57,7 +57,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('director_id');
                     movieId = res.body._id;
                     done();
-            });
+            }).catch(done);
         });
     });
     describe('/GET/:movie_id movie', () => {
@@ -76,7 +76,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('director_id');
                     res.body.should.have.property('_id').eql(movieId);
                     done();
-            });
+            }).catch(done);
         });
     });
     describe('/PUT/:movie_id movie', () => {
@@ -104,7 +104,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('imdb_score').eql(movie.imdb_score);
                     res.body.should.have.property('director_id').eql(movie.director_id);
                     done();
-            });
+            }).catch(done);
         });
     });
     describe('/DELETE/:movie_id movie', () => {
@@ -118,7 +118,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.be.a('object');
                     res.body.should.have.property('status').eql(1);
                     done();
-            });
+            }).catch(done);
         });
     });
 });
