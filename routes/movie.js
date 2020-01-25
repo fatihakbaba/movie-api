@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         {
             $lookup: {
                 from: 'directors',
-                localField: 'directorId',
+                localField: 'director_id',
                 foreignField: '_id',
                 as: 'director'
             }

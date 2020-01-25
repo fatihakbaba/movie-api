@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports = () => {
-    mongoose.connect('mongodb://localhost/movie-api', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+    mongoose.connect('mongodb://localhost/movie-api', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
     mongoose.connection.on('open', () => {
         console.log("Connected");
     });
