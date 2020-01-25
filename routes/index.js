@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/register', function (req, res, next) {
+router.post('/register', (req, res, next) => {
   const { username, password } = req.body;
 
   bcrypt.hash(password, 10).then((hash) => {
@@ -20,7 +20,7 @@ router.post('/register', function (req, res, next) {
       username,
       password: hash
     });
-
+    console.log(req.body);
     const promise = user.save();
 
     promise.then((data) => {

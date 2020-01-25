@@ -7,15 +7,30 @@ chai.use(chaiHttp);
 let token, movieId;
 
 describe('/api/movies tests ', () => {
-    before((done) => {
-        chai.request(server)
-            .post('/authenticate')
-            .send({ username: 'fatih1', password: '123456' })
-            .end((err, res) => {
-                token = res.body.token;
-                this.timeout(20000);
-                done();
-            });
+    // before((done) => {
+    //     chai.request(server)
+    //         .post('/authenticate')
+    //         .send({ username: 'fatih1', password: '123456' })
+    //         .end((err, res) => {
+    //             token = res.body.token;
+    //             done();
+    //         });
+    // });
+
+    describe('/GET movies', () => {
+        it('it should returns token', (done) => {
+            chai.request(server)
+                .post('/authenticate')
+                .send({ username: 'fatih', password: '123456' })
+                .end((err, res) => {
+                    token = res.body.token;
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('status').eql(true);
+                    res.body.should.have.property('token');
+                    done();
+                });
+        });
     });
 
     describe('/GET movies', () => {
