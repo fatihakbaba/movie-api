@@ -10,8 +10,12 @@ describe('/api/movies tests ', () => {
     // before((done) => {
     //     chai.request(server)
     //         .post('/authenticate')
-    //         .send({ username: 'fatih1', password: '123456' })
+    //         .send({ username: 'fatih', password: '123456' })
     //         .end((err, res) => {
+    //                 res.should.have.status(200);
+    //                 res.body.should.be.a('object');
+    //                 res.body.should.have.property('status').eql(true);
+    //                 res.body.should.have.property('token');
     //             token = res.body.token;
     //             done();
     //         });

@@ -1,3 +1,5 @@
+[![Build status](https://api.travis-ci.com/fatihakbaba/movie-api.svg?branch=master)](https://travis-ci.com/fatihakbaba/movie-api/builds/146063717)
+
 # movie-api
 Node.js api example
 
