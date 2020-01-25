@@ -15,7 +15,6 @@ describe('/api/movies tests ', () => {
             .send({ username: 'fatih1', password: '123456' })
             .end((err, res) => {
                 token = res.body.token;
-                console.log(token);
                 done();
             });
     });
@@ -79,12 +78,6 @@ describe('/api/movies tests ', () => {
                     done();
             });
         });
-    
-    
-    
-    
-    
-    
     });
     describe('/PUT/:movie_id movie', () => {
         it('it should UPDATE a movie given by id', (done) => {
