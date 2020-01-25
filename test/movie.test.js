@@ -1,7 +1,5 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const should = chai.should();
-
 const server = require('../app');
 
 chai.use(chaiHttp);
@@ -9,15 +7,27 @@ chai.use(chaiHttp);
 let token, movieId;
 
 describe('/api/movies tests ', () => {
-    before((done) => {
-        chai.request(server)
+    // before((done) => {
+    //     chai.request(server)
+    //         .post('/authenticate')
+    //         .send({ username: 'fatih1', password: '123456' })
+    //         .end((err, res) => {
+    //             token = res.body.token;
+    //             done();
+    //         });
+    // });
+
+    describe('/GET movies', () => {
+        it('it should return token', (done) => {
+            chai.request(server)
             .post('/authenticate')
             .send({ username: 'fatih1', password: '123456' })
             .end((err, res) => {
-                res.should.have.status(200);
                 token = res.body.token;
+                res.should.have.status(200);
                 done();
             });
+        });
     });
 
     describe('/GET movies', () => {
@@ -28,11 +38,11 @@ describe('/api/movies tests ', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                done();
-            });
+                    done();
+                });
         });
     });
-    
+
     describe('/POST movie', () => {
         it('it should POST a movie', (done) => {
             const movie = {
@@ -59,14 +69,14 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('director_id');
                     movieId = res.body._id;
                     done();
-            });
+                });
         });
     });
 
     describe('/GET/:movie_id movie', () => {
         it('it should GET a movie by the given id', (done) => {
             chai.request(server)
-                .get('/api/movies/'+ movieId)
+                .get('/api/movies/' + movieId)
                 .set('x-access-token', token)
                 .end((err, res) => {
                     res.should.have.status(200);
@@ -79,7 +89,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('director_id');
                     res.body.should.have.property('_id').eql(movieId);
                     done();
-            });
+                });
         });
     });
 
@@ -108,7 +118,7 @@ describe('/api/movies tests ', () => {
                     res.body.should.have.property('imdb_score').eql(movie.imdb_score);
                     res.body.should.have.property('director_id').eql(movie.director_id);
                     done();
-            });
+                });
         });
     });
 
@@ -122,8 +132,8 @@ describe('/api/movies tests ', () => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
                     res.body.should.have.property('status').eql(1);
-                done();
-            });
+                    done();
+                });
         });
     });
 });

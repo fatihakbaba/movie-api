@@ -33,7 +33,7 @@ router.post('/register', function (req, res, next) {
 
 router.post('/authenticate', (req, res) => {
   const { username, password } = req.body;
-
+  console.log(req.body);
   User.findOne({
     username
   }, (err, user) => {
