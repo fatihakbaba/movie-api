@@ -15,6 +15,7 @@ describe('/api/movies tests ', () => {
             .send({ username: 'fatih1', password: '123456' })
             .end((err, res) => {
                 token = res.body.token;
+                console.log(token);
                 done();
             });
     });
